@@ -1,5 +1,9 @@
-from fastapi import FastAPI
+from fastapi import APIRouter, Depends, HTTPException
 import requests
+from fastapi.security import HTTPBasicCredentials
+from security.secure import http_basic, authenticate
+from repositories.login_repository import LoginRepository
+from database import sess_db
 
 API_KEY = "33df77cbf5d4483ab87b3980e0bc913a"
 ENDPOINT_URL = "https://api-v3.mbta.com"
